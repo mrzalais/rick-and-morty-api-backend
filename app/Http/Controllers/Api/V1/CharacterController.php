@@ -18,4 +18,11 @@ class CharacterController extends Controller
 
         return response()->json($characters);
     }
+
+    public function viewCharacter(int $id): JsonResponse
+    {
+        $character = $this->apiClient->getCharacter($id);
+
+        return response()->json($character);
+    }
 }

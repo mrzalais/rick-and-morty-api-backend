@@ -18,4 +18,15 @@ class RickAndMortyApiClient
 
         return $response->json();
     }
+
+    public function getCharacter(int $id)
+    {
+        $response = Http::get($this->url . '/api/character/' . $id);
+
+        if (!$response->successful()) {
+            return [];
+        }
+
+        return $response->json();
+    }
 }
