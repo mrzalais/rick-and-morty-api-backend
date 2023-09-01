@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GetCharacterRequest;
 use App\RickAndMortyApiClient;
 use Illuminate\Http\JsonResponse;
 
@@ -12,9 +13,9 @@ class CharacterController extends Controller
     {
     }
 
-    public function getCharacters(): JsonResponse
+    public function getCharacters(GetCharacterRequest $request): JsonResponse
     {
-        $characters = $this->apiClient->getCharacters();
+        $characters = $this->apiClient->getCharacters($request->input('page', 1));
 
         return response()->json($characters);
     }

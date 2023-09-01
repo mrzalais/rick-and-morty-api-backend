@@ -8,9 +8,14 @@ class RickAndMortyApiClient
 {
     private string $url = 'https://rickandmortyapi.com';
 
-    public function getCharacters(): array
+    public function getCharacters(int $page): array
     {
-        $response = Http::get($this->url . '/api/character');
+        $response = Http::get(
+            $this->url . '/api/character',
+            [
+                'page' => $page,
+            ]
+        );
 
         if (!$response->successful()) {
             return [];
