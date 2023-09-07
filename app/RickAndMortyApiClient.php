@@ -27,10 +27,7 @@ class RickAndMortyApiClient
     public function getCharacter(int $id): array
     {
         $response = Http::get(
-            $this->url . '/api/character/',
-            [
-                'id' => $id
-            ]
+            $this->url . '/api/character/' . $id
         );
 
         if (!$response->successful()) {
